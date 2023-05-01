@@ -33,3 +33,25 @@
 
         return builder.ToString();
     }
+    
+     private Dictionary<string, object> JsonToDictionary(string jsonString)
+    {
+        // Create an empty dictionary
+        Dictionary<string, object> dict = new Dictionary<string, object>();
+
+        // Parse the JSON string using the MiniJSON library
+        object jsonObj = Json.Deserialize(jsonString);
+
+        // Convert the JSON object to a dictionary
+        if (jsonObj is Dictionary<string, object>)
+        {
+            dict = (Dictionary<string, object>)jsonObj;
+            foreach (var item in dict)
+            {
+                Debug.Log(item.Key + "Keys");
+
+            }
+        }
+
+        return dict;
+    }
